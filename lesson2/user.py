@@ -14,7 +14,49 @@
 
 
 class User:
-    pass
+    name: str
+    password: str
+    _is_admin: bool
+    _is_logged_in: bool
+
+    def __init__(self, name, password):
+        self._name = name
+        self._password = password
+        self._is_admin = False
+        self._is_logged_in = True
+
+    @property
+    def name(self):
+        return self._name
+
+    @property
+    def password(self):
+        return self._password
+
+    @password.setter
+    def password(self, password):
+        self._password = password
+
+    @property
+    def is_admin(self):
+        if self._is_admin:
+            return True
+        else:
+            return False
+
+    @is_admin.setter
+    def is_admin(self, stat):
+        self._is_admin = stat
+
+    def login(self, password):
+        if self._password == password:
+            print(True)
+        else:
+            print(False)
+
+    def logout(self):
+        if self._is_logged_in:
+            self._is_logged_in = False
 
 
 # код для проверки 
