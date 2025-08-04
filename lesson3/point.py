@@ -9,8 +9,18 @@
 
 
 class Point:
-    pass
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
 
+    def __repr__(self):
+        return f"{self.__class__.__name__}({self.x}, {self.y})"
+
+    def __str__(self):
+        return f"({self.x}, {self.y})"
+
+    def __add__(self, other):
+        return f"({self.x + other.x}, {self.y + other.y})"
 
 # код для проверки 
 point1 = Point(1, 2)
