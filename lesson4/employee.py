@@ -9,11 +9,25 @@
 - __init__(self, name, salary, bonus): конструктор, принимающий имя менеджера, его зарплату и бонус;
 - get_salary(self): метод, который возвращает зарплату менеджера плюс его бонус.
 """
+from errno import EMLINK
 
 
 class Employee:
-    pass
+    def __init__(self, name, salary):
+        self.name = name
+        self.salary = salary
 
+    def get_salary(self):
+        return self.salary
+
+
+class Manager(Employee):
+    def __init__(self, name, salary, bonus):
+        super().__init__(name, salary)
+        self.bonus = bonus
+
+    def get_salary(self):
+        return self.salary + self.bonus
 
 # код для проверки 
 employee = Employee("John", 5000)

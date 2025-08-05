@@ -3,6 +3,7 @@
 было число, а прибавлять можно было только числа или другие объекты дочерних классов Employee
 
 """
+from typing import Union
 
 
 class Employee:
@@ -10,11 +11,22 @@ class Employee:
     def __init__(self, pay):
         self.pay = pay
 
+    def __add__(self, other):
+        if issubclass(type(other), Employee):
+            return self.pay + other.pay
+        elif type(other) is int:
+            return self.pay + other
+        else:
+            return 0
+
 
 class Client:
 
     def __init__(self, pay):
         self.pay = pay
+
+    def __add__(self, other):
+        return 0 + other
 
 
 class Developer(Employee):
