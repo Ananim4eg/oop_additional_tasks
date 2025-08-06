@@ -10,7 +10,16 @@
 
 
 class Student:
-    pass
+    __slots__ = ('name', 'age', 'grades')
+    name: str
+    age: int
+    grades: list[int]
+
+
+class Course:
+    __slots__ = ('name', 'students')
+    name: str
+    students: list[Student]
 
 
 # код для проверки 

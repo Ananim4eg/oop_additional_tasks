@@ -13,18 +13,40 @@
 
 
 class Car:
-    pass
+    brand: str
+    model: str
+    release_year: int
 
+    def __init__(self, brand, model, release_year):
+        self.brand = brand
+        self.model = model
+        self.release_year = release_year
+
+    def get_set_del(self):
+        self.release_year += 1
+        self.model = "Q7"
+        del self.model
 
 class CarSlots:
-    pass
+    __slots__ = ("brand", "model", "release_year")
+
+    def __init__(self, brand, model, release_year):
+        self.brand = brand
+        self.model = model
+        self.release_year = release_year
+
+    def get_set_del(self):
+        self.release_year += 1
+        self.model = "Q7"
+        del self.model
 
 
 car = Car('Toyota', 'Corolla', 2022)
-car_slots = Car('Toyota', 'Crown', 1990)
+car_slots = CarSlots('Toyota', 'Crown', 1990)
 
 import timeit
 
 t1 = timeit.timeit(car.get_set_del)
 t2 = timeit.timeit(car_slots.get_set_del)
+
 print((t1-t2)/t1*100)
