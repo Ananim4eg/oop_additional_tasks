@@ -12,9 +12,16 @@
 
 class Student:
 
-    def __init__(...):
-        ...
+    def __init__(self, name: str, course: str, grades: list):
+        self.name = name
+        self.course = course
+        self.grades = grades
 
+    def avg_rate(self):
+        try:
+            print(sum(self.grades) / len(self.grades))
+        except ZeroDivisionError:
+            print(0.0)
 
 # код для проверки
 student = Student('Ivan', 'Python', [5, 4, 5, 5])
